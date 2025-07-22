@@ -1,13 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables for Aesthetic Design */
+:root {
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-gold: #d4af37;
+  --color-gold-light: #f4e4bc;
+  --color-gold-dark: #b8941f;
+  --color-gray-light: #f8f8f8;
+  --color-gray-medium: #e5e5e5;
+  --color-gray-dark: #333333;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-size: 16px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Dark mode body styles */
+.dark body {
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
+
+/* Aesthetic Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+/* Gold Gradient for Special Text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--color-gold-dark) 0%, var(--color-gold) 50%, var(--color-gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Minimalist Button Styles */
+.btn-minimal {
+  background: transparent;
+  border: 1px solid var(--color-black);
+  color: var(--color-black);
+  padding: 0.75rem 2rem;
+  transition: all 0.3s ease;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+.dark .btn-minimal {
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+.btn-minimal:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.dark .btn-minimal:hover {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.btn-gold {
+  background: var(--color-gold);
+  color: var(--color-black);
+  border: none;
+  padding: 0.75rem 2rem;
+  transition: all 0.3s ease;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+.btn-gold:hover {
+  background: var(--color-gold-dark);
+  transform: translateY(-2px);
+}
+
+/* Custom scrollbar for aesthetic look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-gray-light);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--color-gray-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-dark);
+}
+
+/* Selection color */
+::selection {
+  background: var(--color-gold);
+  color: var(--color-black);
+}
+
+/* Fill classes for SVG */
+.fill-gold {
+  fill: var(--color-gold);
+}
+
+.fill-gradient-gold {
+  fill: url(#goldGradient);
+}
+
+/* Subtle animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+  
+  .btn-minimal, .btn-gold {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+} 
