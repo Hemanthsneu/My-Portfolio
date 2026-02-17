@@ -1,15 +1,20 @@
 {
-  "short_name": "Hemanth",
-  "name": "Hemanth Portfolio",
+  "short_name": "Hemanth Saragadam",
+  "name": "Hemanth Saragadam - Senior Software Engineer Portfolio",
+  "description": "Portfolio of Hemanth Saragadam, Senior Software Engineer specializing in Full Stack Development, Blockchain, iOS, and Cloud Architecture. Available for hire.",
   "icons": [
     {
       "src": "hs_logo.png",
       "type": "image/png",
-      "sizes": "1024x1024"
+      "sizes": "1024x1024",
+      "purpose": "any maskable"
     }
   ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "categories": ["portfolio", "technology", "software engineering"],
+  "lang": "en-US"
 }

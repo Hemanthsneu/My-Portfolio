@@ -68,12 +68,15 @@ const Hero: React.FC = () => {
                 className="text-5xl md:text-7xl font-thin tracking-wider text-black dark:text-white"
               />
             </h1>
+            <span className="sr-only">Hemanth Saragadam - Senior Software Engineer, Full Stack Developer, iOS Developer, Blockchain Specialist, Cloud Architect. Available for hire. Based in Boston, MA. Master's in Computer Science from Northeastern University.</span>
           </motion.div>
 
           {/* Roles with Curved Loop Animation */}
           <motion.div
             variants={itemVariants}
             className="mb-12 relative w-full max-w-5xl mx-auto h-32"
+            role="marquee"
+            aria-label="Professional roles: Senior Software Engineer, Full-Stack Developer, iOS Developer, Blockchain Specialist, Cloud Architect"
           >
             <CurvedLoop 
               marqueeText="SENIOR SOFTWARE ENGINEER ✦ FULL-STACK DEVELOPER ✦ iOS DEVELOPER ✦ BLOCKCHAIN SPECIALIST ✦ CLOUD ARCHITECT ✦ "

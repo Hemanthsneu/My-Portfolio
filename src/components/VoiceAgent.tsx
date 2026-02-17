@@ -16,7 +16,7 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
   const [isSupported, setIsSupported] = useState(false);
   const [error, setError] = useState('');
   const [selectedVoice, setSelectedVoice] = useState<SpeechSynthesisVoice | null>(null);
-  const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
 
   const recognitionRef = useRef<SpeechRecognition | null>(null);
   const synthRef = useRef<SpeechSynthesis | null>(null);
@@ -96,6 +96,96 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
     }
   }, []);
 
+  // Enhanced text-to-speech function with proper English voice
+  const speak = useCallback((text: string) => {
+    if (synthRef.current && text && selectedVoice) {
+      synthRef.current.cancel();
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.voice = selectedVoice;
+      utterance.rate = 0.75;
+      utterance.pitch = 1.2;
+      utterance.volume = 0.7;
+
+      const enhancedText = text
+        .replace(/\./g, '. ')
+        .replace(/,/g, ', ')
+        .replace(/!/g, '.')
+        .replace(/\?/g, '?');
+
+      utterance.text = enhancedText;
+
+      utterance.onstart = () => setIsSpeaking(true);
+      utterance.onend = () => setIsSpeaking(false);
+      utterance.onerror = () => {
+        setIsSpeaking(false);
+        console.log('Speech error - stopping voice');
+      };
+
+      if (selectedVoice) {
+        synthRef.current.speak(utterance);
+      }
+    }
+  }, [selectedVoice]);
+
+  // Process user queries and generate responses
+  const processQuery = useCallback((query: string) => {
+    setIsProcessing(true);
+    const lowerQuery = query.toLowerCase();
+
+    const userMessage = {
+      id: Date.now().toString(),
+      type: 'user' as const,
+      content: query,
+      timestamp: new Date()
+    };
+
+    setConversation(prev => [...prev, userMessage]);
+
+    let agentResponse = '';
+
+    if (lowerQuery.includes('name') || lowerQuery.includes('who are you') || lowerQuery.includes('introduce')) {
+      agentResponse = `Hello! I'm Hemanth's personal AI assistant. Hemanth Saragadam is a talented Senior Software Engineer currently working at Labs196 Innovations. He's quite passionate about full-stack development, cloud technologies, and building scalable applications that make a real difference.`;
+    }
+    else if (lowerQuery.includes('experience') || lowerQuery.includes('work') || lowerQuery.includes('job')) {
+      agentResponse = `Hemanth has quite impressive experience! He's currently serving as a Senior Software Engineer at Labs196 Innovations since September 2024, where he leads full-stack development initiatives. Previously, he contributed as a Full Stack Developer at Northeastern University and worked as a Software Engineer at KYC Hub. He's skilled with modern technologies including React, Node.js, AWS, and Golang.`;
+    }
+    else if (lowerQuery.includes('skill') || lowerQuery.includes('technology') || lowerQuery.includes('programming')) {
+      agentResponse = `Hemanth possesses quite diverse technical expertise! He's proficient in various programming languages such as Swift, Java, Python, JavaScript, TypeScript, and Go. For web development, he excels with React, Angular, Next.js, and Node.js. He's also well-versed in cloud platforms like AWS and GCP, along with databases including MySQL, MongoDB, and PostgreSQL.`;
+    }
+    else if (lowerQuery.includes('project') || lowerQuery.includes('build') || lowerQuery.includes('develop')) {
+      agentResponse = `Hemanth has developed some truly fascinating projects! His recent work includes a Geo-Anonymous Chat App for iOS using Swift and Firebase, an Assignment Management System with Node.js and AWS, and a Healthcare Progressive Web Application with offline capabilities. Each project beautifully showcases his full-stack expertise and attention to detail.`;
+    }
+    else if (lowerQuery.includes('contact') || lowerQuery.includes('reach') || lowerQuery.includes('email') || lowerQuery.includes('phone')) {
+      agentResponse = `You can easily reach Hemanth at hemanthsaragadam.dev@gmail.com or give him a call at +1(857)-313-2694. He's also quite active on LinkedIn at linkedin.com/in/hemanths31 and you can find his work on GitHub at github.com/Hemanthsneu. He's currently based in the lovely city of Boston, Massachusetts.`;
+    }
+    else if (lowerQuery.includes('education') || lowerQuery.includes('study') || lowerQuery.includes('university')) {
+      agentResponse = `Hemanth has a solid educational foundation in computer science and gained valuable academic and practical experience during his time as a Full Stack Developer at Northeastern University, where he honed both his technical skills and collaborative abilities.`;
+    }
+    else if (lowerQuery.includes('hire') || lowerQuery.includes('available') || lowerQuery.includes('opportunity')) {
+      agentResponse = `Hemanth is always open to discussing exciting new opportunities and meaningful collaborations! While he's currently contributing at Labs196 Innovations, he's genuinely interested in challenging projects that push boundaries. I'd highly recommend reaching out to him directly via email or LinkedIn to explore potential opportunities.`;
+    }
+    else if (lowerQuery.includes('hello') || lowerQuery.includes('hi') || lowerQuery.includes('hey')) {
+      agentResponse = `Hello there! Lovely to meet you! I'm Hemanth's AI assistant, and I'm delighted to help. I can tell you all about his professional experience, technical skills, exciting projects, and how to get in touch with him. What would you particularly like to know?`;
+    }
+    else {
+      agentResponse = `That's quite an interesting question! I'd be happy to help you learn more about Hemanth. I can share details about his professional experience, technical expertise, innovative projects, contact information, or career background. What specific aspect interests you most?`;
+    }
+
+    const agentMessage = {
+      id: (Date.now() + 1).toString(),
+      type: 'agent' as const,
+      content: agentResponse,
+      timestamp: new Date()
+    };
+
+    setConversation(prev => [...prev, agentMessage]);
+    setResponse(agentResponse);
+    setIsProcessing(false);
+
+    speak(agentResponse);
+  }, [speak]);
+
   // Initialize speech recognition and synthesis
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -106,7 +196,6 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
         setIsSupported(true);
         synthRef.current = speechSynthesis;
 
-        // Load voices when they become available
         loadVoices();
         if (speechSynthesis.onvoiceschanged !== undefined) {
           speechSynthesis.onvoiceschanged = loadVoices;
@@ -144,107 +233,6 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
       }
     }
   }, [loadVoices, processQuery]);
-
-  // Process user queries and generate responses
-  const processQuery = useCallback((query: string) => {
-    setIsProcessing(true);
-    const lowerQuery = query.toLowerCase();
-
-    // Add user message to conversation
-    const userMessage = {
-      id: Date.now().toString(),
-      type: 'user' as const,
-      content: query,
-      timestamp: new Date()
-    };
-
-    setConversation(prev => [...prev, userMessage]);
-
-    let agentResponse = '';
-
-    // Intent recognition and response generation with more natural language
-    if (lowerQuery.includes('name') || lowerQuery.includes('who are you') || lowerQuery.includes('introduce')) {
-      agentResponse = `Hello! I'm Hemanth's personal AI assistant. Hemanth Saragadam is a talented Senior Software Engineer currently working at Labs196 Innovations. He's quite passionate about full-stack development, cloud technologies, and building scalable applications that make a real difference.`;
-    }
-    else if (lowerQuery.includes('experience') || lowerQuery.includes('work') || lowerQuery.includes('job')) {
-      agentResponse = `Hemanth has quite impressive experience! He's currently serving as a Senior Software Engineer at Labs196 Innovations since September 2024, where he leads full-stack development initiatives. Previously, he contributed as a Full Stack Developer at Northeastern University and worked as a Software Engineer at KYC Hub. He's skilled with modern technologies including React, Node.js, AWS, and Golang.`;
-    }
-    else if (lowerQuery.includes('skill') || lowerQuery.includes('technology') || lowerQuery.includes('programming')) {
-      agentResponse = `Hemanth possesses quite diverse technical expertise! He's proficient in various programming languages such as Swift, Java, Python, JavaScript, TypeScript, and Go. For web development, he excels with React, Angular, Next.js, and Node.js. He's also well-versed in cloud platforms like AWS and GCP, along with databases including MySQL, MongoDB, and PostgreSQL.`;
-    }
-    else if (lowerQuery.includes('project') || lowerQuery.includes('build') || lowerQuery.includes('develop')) {
-      agentResponse = `Hemanth has developed some truly fascinating projects! His recent work includes a Geo-Anonymous Chat App for iOS using Swift and Firebase, an Assignment Management System with Node.js and AWS, and a Healthcare Progressive Web Application with offline capabilities. Each project beautifully showcases his full-stack expertise and attention to detail.`;
-    }
-    else if (lowerQuery.includes('contact') || lowerQuery.includes('reach') || lowerQuery.includes('email') || lowerQuery.includes('phone')) {
-      agentResponse = `You can easily reach Hemanth at hemanthsaragadam.dev@gmail.com or give him a call at +1(857)-313-2694. He's also quite active on LinkedIn at linkedin.com/in/hemanths31 and you can find his work on GitHub at github.com/Hemanthsneu. He's currently based in the lovely city of Boston, Massachusetts.`;
-    }
-    else if (lowerQuery.includes('education') || lowerQuery.includes('study') || lowerQuery.includes('university')) {
-      agentResponse = `Hemanth has a solid educational foundation in computer science and gained valuable academic and practical experience during his time as a Full Stack Developer at Northeastern University, where he honed both his technical skills and collaborative abilities.`;
-    }
-    else if (lowerQuery.includes('hire') || lowerQuery.includes('available') || lowerQuery.includes('opportunity')) {
-      agentResponse = `Hemanth is always open to discussing exciting new opportunities and meaningful collaborations! While he's currently contributing at Labs196 Innovations, he's genuinely interested in challenging projects that push boundaries. I'd highly recommend reaching out to him directly via email or LinkedIn to explore potential opportunities.`;
-    }
-    else if (lowerQuery.includes('hello') || lowerQuery.includes('hi') || lowerQuery.includes('hey')) {
-      agentResponse = `Hello there! Lovely to meet you! I'm Hemanth's AI assistant, and I'm delighted to help. I can tell you all about his professional experience, technical skills, exciting projects, and how to get in touch with him. What would you particularly like to know?`;
-    }
-    else {
-      agentResponse = `That's quite an interesting question! I'd be happy to help you learn more about Hemanth. I can share details about his professional experience, technical expertise, innovative projects, contact information, or career background. What specific aspect interests you most?`;
-    }
-
-    // Add agent response to conversation
-    const agentMessage = {
-      id: (Date.now() + 1).toString(),
-      type: 'agent' as const,
-      content: agentResponse,
-      timestamp: new Date()
-    };
-
-    setConversation(prev => [...prev, agentMessage]);
-    setResponse(agentResponse);
-    setIsProcessing(false);
-
-    // Speak the response with selected voice
-    speak(agentResponse);
-  }, [speak]);
-
-  // Enhanced text-to-speech function with proper English voice
-  const speak = useCallback((text: string) => {
-    if (synthRef.current && text && selectedVoice) {
-      // Cancel any ongoing speech
-      synthRef.current.cancel();
-
-      const utterance = new SpeechSynthesisUtterance(text);
-
-      // Use selected voice only if it's safe
-      utterance.voice = selectedVoice;
-
-      // Very gentle voice settings - soft and pleasant
-      utterance.rate = 0.75; // Slower for calm delivery
-      utterance.pitch = 1.2; // Higher pitch for gentle feminine voice
-      utterance.volume = 0.7; // Softer volume to avoid scary effect
-
-      // Add natural pauses and make text gentler
-      const enhancedText = text
-        .replace(/\./g, '. ') // Add pauses at periods
-        .replace(/,/g, ', ') // Add slight pause after commas
-        .replace(/!/g, '.') // Convert excitement to calm periods
-        .replace(/\?/g, '?'); // Keep questions gentle
-
-      utterance.text = enhancedText;
-
-      utterance.onstart = () => setIsSpeaking(true);
-      utterance.onend = () => setIsSpeaking(false);
-      utterance.onerror = () => {
-        setIsSpeaking(false);
-        console.log('Speech error - stopping voice');
-      };
-
-      // Only speak if we have a safe voice
-      if (selectedVoice) {
-        synthRef.current.speak(utterance);
-      }
-    }
-  }, [selectedVoice]);
 
   // Start voice recognition
   const startListening = useCallback(() => {

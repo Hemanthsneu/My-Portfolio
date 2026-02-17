@@ -1,4 +1,50 @@
+# Robots.txt for Hemanth Saragadam Portfolio
+# https://hemanthsaragadam.vercel.app/
+
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /static/js/*.map
+Disallow: /static/css/*.map
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# Google Images
+User-agent: Googlebot-Image
+Allow: /
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Facebook
+User-agent: facebookexternalhit
+Allow: /
+
+# Twitter
+User-agent: Twitterbot
+Allow: /
+
+# LinkedIn
+User-agent: LinkedInBot
+Allow: /
 
 Sitemap: https://hemanthsaragadam.vercel.app/sitemap.xml
+Host: https://hemanthsaragadam.vercel.app
