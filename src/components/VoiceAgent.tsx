@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mic, MicOff, Volume2, VolumeX, MessageCircle, X, Brain, Sparkles, Settings } from 'lucide-react';
+import { Mic, MicOff, Volume2, VolumeX, X, Brain, Sparkles } from 'lucide-react';
 
 interface VoiceAgentProps {
   className?: string;
@@ -11,9 +11,8 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
   const [isListening, setIsListening] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [transcript, setTranscript] = useState('');
   const [response, setResponse] = useState('');
-  const [conversation, setConversation] = useState<Array<{id: string, type: 'user' | 'agent', content: string, timestamp: Date}>>([]);
+  const [conversation, setConversation] = useState<Array<{ id: string, type: 'user' | 'agent', content: string, timestamp: Date }>>([]);
   const [isSupported, setIsSupported] = useState(false);
   const [error, setError] = useState('');
   const [selectedVoice, setSelectedVoice] = useState<SpeechSynthesisVoice | null>(null);
@@ -23,79 +22,30 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
   const synthRef = useRef<SpeechSynthesis | null>(null);
 
   // Portfolio knowledge base
-  const portfolioData = {
-    personal: {
-      name: "Hemanth Saragadam",
-      title: "Senior Software Engineer",
-      location: "Boston, Massachusetts",
-      email: "hemanthsaragadam.dev@gmail.com",
-      phone: "+1(857)-313-2694",
-      linkedin: "linkedin.com/in/hemanths31",
-      github: "github.com/Hemanthsneu"
-    },
-    experience: [
-      {
-        title: "Senior Software Engineer",
-        company: "Labs196 Innovations LLC (RealProton)",
-        period: "September 2024 – Present",
-        description: "Leading full-stack development with Next.js, Golang, MySQL, React, Node.js, and AWS"
-      },
-      {
-        title: "Full Stack Developer", 
-        company: "Northeastern University",
-        period: "January 2023 – May 2024",
-        description: "Built Assignment Management System with Node.js, AWS, and Pulumi"
-      },
-      {
-        title: "Software Engineer",
-        company: "KYC Hub", 
-        period: "January 2022 – August 2022",
-        description: "Developed compliance tools using Angular and Spring Boot"
-      }
-    ],
-    skills: {
-      languages: ["Swift", "Java", "C#", "Objective-C", "GO", "Python", "Rust", "JavaScript", "TypeScript", "C++"],
-      web: ["Angular", "React", "Vue", "Spring Boot", "Django", "Next.js", "NodeJS", "Express"],
-      cloud: ["AWS", "GCP", "Kubernetes", "Docker", "Jenkins", "Azure", "Terraform"],
-      databases: ["SQL", "PostgreSQL", "MySQL", "Redis", "MongoDB", "Snowflake", "DynamoDB"]
-    },
-    projects: [
-      {
-        title: "Geo-Anonymous Chat App",
-        description: "iOS application for location-based anonymous communication with Firebase and CoreLocation"
-      },
-      {
-        title: "Assignment Management System", 
-        description: "Full-stack application with automated processing using AWS Lambda and Node.js"
-      },
-      {
-        title: "Healthcare PWA Platform",
-        description: "Progressive Web Application with offline support and real-time analytics"
-      }
-    ]
-  };
+  // Portfolio knowledge base (Placeholder for future use or can be removed if strictly linting)
+  // const portfolioData = { ... };
 
   // Load and select the best English female voice
   const loadVoices = useCallback(() => {
     if (synthRef.current) {
       const voices = synthRef.current.getVoices();
       setAvailableVoices(voices);
-      
+
       // Blacklist of voices that might sound scary or robotic
       const voiceBlacklist = [
-        'albert', 'alex', 'bad', 'bahh', 'bells', 'boing', 'bubbles', 'cellos', 
+        'albert', 'alex', 'bad', 'bahh', 'bells', 'boing', 'bubbles', 'cellos',
         'deranged', 'good', 'hysterical', 'junior', 'pipe', 'trinoids', 'whisper',
         'zarvox', 'robot', 'machine', 'synthetic', 'artificial', 'scary', 'spooky',
         'monster', 'demon', 'ghost', 'creepy', 'horror', 'dark', 'evil', 'deep'
       ];
-      
+
       // Filter out blacklisted voices
-      const safeVoices = voices.filter(voice => 
-        !voiceBlacklist.some(blacklisted => 
+      const safeVoices = voices.filter(voice =>
+        !voiceBlacklist.some(blacklisted =>
           voice.name.toLowerCase().includes(blacklisted)
         )
       );
-      
+
       // Priority order for voice selection - ONLY gentle, pleasant voices
       const voicePreferences = [
         // Specifically gentle British English Female voices
@@ -103,33 +53,33 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
         (v: SpeechSynthesisVoice) => v.name.includes('Kate') && v.lang.includes('en-GB'),
         (v: SpeechSynthesisVoice) => v.name.includes('Serena') && v.lang.includes('en-GB'),
         (v: SpeechSynthesisVoice) => v.name.includes('Amy') && v.lang.includes('en-GB'),
-        
+
         // Gentle American English Female voices
         (v: SpeechSynthesisVoice) => v.name.includes('Samantha') && v.lang.includes('en-US'),
         (v: SpeechSynthesisVoice) => v.name.includes('Victoria') && v.lang.includes('en-US'),
         (v: SpeechSynthesisVoice) => v.name.includes('Allison') && v.lang.includes('en-US'),
         (v: SpeechSynthesisVoice) => v.name.includes('Susan') && v.lang.includes('en-US'),
-        
+
         // Safe female voices only
         (v: SpeechSynthesisVoice) => v.lang.includes('en-GB') && v.name.toLowerCase().includes('female'),
         (v: SpeechSynthesisVoice) => v.lang.includes('en-US') && v.name.toLowerCase().includes('female'),
-        
+
         // Pleasant female names only
         (v: SpeechSynthesisVoice) => v.lang.includes('en') && (
-          ['anna', 'bella', 'claire', 'diana', 'elena', 'fiona', 'grace', 'helen', 
-           'iris', 'julia', 'laura', 'maria', 'nina', 'olivia', 'rachel', 'sarah', 
-           'tessa', 'victoria', 'wendy', 'lily', 'rose', 'sophie', 'emily', 'charlotte'].some(name => 
-            v.name.toLowerCase().includes(name)
-          )
+          ['anna', 'bella', 'claire', 'diana', 'elena', 'fiona', 'grace', 'helen',
+            'iris', 'julia', 'laura', 'maria', 'nina', 'olivia', 'rachel', 'sarah',
+            'tessa', 'victoria', 'wendy', 'lily', 'rose', 'sophie', 'emily', 'charlotte'].some(name =>
+              v.name.toLowerCase().includes(name)
+            )
         ),
-        
+
         // Final fallback - any gentle English voice (exclude male-sounding names)
-        (v: SpeechSynthesisVoice) => v.lang.includes('en-GB') && 
-          !['daniel', 'david', 'james', 'john', 'michael', 'robert', 'thomas', 'william', 'alex'].some(male => 
+        (v: SpeechSynthesisVoice) => v.lang.includes('en-GB') &&
+          !['daniel', 'david', 'james', 'john', 'michael', 'robert', 'thomas', 'william', 'alex'].some(male =>
             v.name.toLowerCase().includes(male)
           ),
       ];
-      
+
       // Find the best SAFE voice based on preferences
       for (const preference of voicePreferences) {
         const voice = safeVoices.find(preference);
@@ -139,7 +89,7 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
           return;
         }
       }
-      
+
       // If no safe voice found, disable voice features
       console.log('No safe voice found, disabling voice features');
       setSelectedVoice(null);
@@ -151,56 +101,55 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
     if (typeof window !== 'undefined') {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       const speechSynthesis = window.speechSynthesis;
-      
+
       if (SpeechRecognition && speechSynthesis) {
         setIsSupported(true);
         synthRef.current = speechSynthesis;
-        
+
         // Load voices when they become available
         loadVoices();
         if (speechSynthesis.onvoiceschanged !== undefined) {
           speechSynthesis.onvoiceschanged = loadVoices;
         }
-        
+
         const recognition = new SpeechRecognition();
         recognition.continuous = false;
         recognition.interimResults = true;
         recognition.lang = 'en-US';
-        
+
         recognition.onstart = () => {
           setIsListening(true);
           setError('');
         };
-        
+
         recognition.onresult = (event) => {
           const lastResult = event.results[event.results.length - 1];
           if (lastResult.isFinal) {
-            setTranscript(lastResult[0].transcript);
             processQuery(lastResult[0].transcript);
           }
         };
-        
+
         recognition.onerror = (event) => {
           setError(`Speech recognition error: ${event.error}`);
           setIsListening(false);
         };
-        
+
         recognition.onend = () => {
           setIsListening(false);
         };
-        
+
         recognitionRef.current = recognition;
       } else {
         setError('Speech recognition not supported in this browser');
       }
     }
-  }, [loadVoices]);
+  }, [loadVoices, processQuery]);
 
   // Process user queries and generate responses
   const processQuery = useCallback((query: string) => {
     setIsProcessing(true);
     const lowerQuery = query.toLowerCase();
-    
+
     // Add user message to conversation
     const userMessage = {
       id: Date.now().toString(),
@@ -208,11 +157,11 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
       content: query,
       timestamp: new Date()
     };
-    
+
     setConversation(prev => [...prev, userMessage]);
-    
+
     let agentResponse = '';
-    
+
     // Intent recognition and response generation with more natural language
     if (lowerQuery.includes('name') || lowerQuery.includes('who are you') || lowerQuery.includes('introduce')) {
       agentResponse = `Hello! I'm Hemanth's personal AI assistant. Hemanth Saragadam is a talented Senior Software Engineer currently working at Labs196 Innovations. He's quite passionate about full-stack development, cloud technologies, and building scalable applications that make a real difference.`;
@@ -241,7 +190,7 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
     else {
       agentResponse = `That's quite an interesting question! I'd be happy to help you learn more about Hemanth. I can share details about his professional experience, technical expertise, innovative projects, contact information, or career background. What specific aspect interests you most?`;
     }
-    
+
     // Add agent response to conversation
     const agentMessage = {
       id: (Date.now() + 1).toString(),
@@ -249,47 +198,47 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
       content: agentResponse,
       timestamp: new Date()
     };
-    
+
     setConversation(prev => [...prev, agentMessage]);
     setResponse(agentResponse);
     setIsProcessing(false);
-    
+
     // Speak the response with selected voice
     speak(agentResponse);
-  }, []);
+  }, [speak]);
 
   // Enhanced text-to-speech function with proper English voice
   const speak = useCallback((text: string) => {
     if (synthRef.current && text && selectedVoice) {
       // Cancel any ongoing speech
       synthRef.current.cancel();
-      
+
       const utterance = new SpeechSynthesisUtterance(text);
-      
+
       // Use selected voice only if it's safe
       utterance.voice = selectedVoice;
-      
+
       // Very gentle voice settings - soft and pleasant
       utterance.rate = 0.75; // Slower for calm delivery
       utterance.pitch = 1.2; // Higher pitch for gentle feminine voice
       utterance.volume = 0.7; // Softer volume to avoid scary effect
-      
+
       // Add natural pauses and make text gentler
       const enhancedText = text
         .replace(/\./g, '. ') // Add pauses at periods
         .replace(/,/g, ', ') // Add slight pause after commas
         .replace(/!/g, '.') // Convert excitement to calm periods
         .replace(/\?/g, '?'); // Keep questions gentle
-      
+
       utterance.text = enhancedText;
-      
+
       utterance.onstart = () => setIsSpeaking(true);
       utterance.onend = () => setIsSpeaking(false);
       utterance.onerror = () => {
         setIsSpeaking(false);
         console.log('Speech error - stopping voice');
       };
-      
+
       // Only speak if we have a safe voice
       if (selectedVoice) {
         synthRef.current.speak(utterance);
@@ -300,7 +249,6 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
   // Start voice recognition
   const startListening = useCallback(() => {
     if (recognitionRef.current && !isListening) {
-      setTranscript('');
       setError('');
       recognitionRef.current.start();
     }
@@ -324,7 +272,6 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
   // Clear conversation
   const clearConversation = useCallback(() => {
     setConversation([]);
-    setTranscript('');
     setResponse('');
     stopSpeaking();
   }, [stopSpeaking]);
@@ -356,7 +303,7 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
               transition={{ duration: 1, repeat: Infinity }}
             />
           )}
-          
+
           {/* Processing effect */}
           {isProcessing && (
             <motion.div
@@ -365,9 +312,9 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
               transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
             />
           )}
-          
+
           <Brain className="w-6 h-6 sm:w-8 sm:h-8 text-white relative z-10" />
-          
+
           {/* Sparkle effects */}
           <Sparkles className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 text-yellow-300 animate-pulse" />
         </motion.button>
@@ -421,18 +368,17 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
                     className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
                     <div
-                      className={`max-w-[85%] sm:max-w-[80%] p-2 sm:p-3 rounded-xl text-xs sm:text-sm ${
-                        message.type === 'user'
+                      className={`max-w-[85%] sm:max-w-[80%] p-2 sm:p-3 rounded-xl text-xs sm:text-sm ${message.type === 'user'
                           ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white'
                           : 'bg-gray-100 text-gray-800'
-                      }`}
+                        }`}
                     >
                       {message.content}
                     </div>
                   </motion.div>
                 ))
               )}
-              
+
               {isProcessing && (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -469,18 +415,17 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
                   {error}
                 </div>
               )}
-              
+
               <div className="flex items-center justify-center space-x-2 sm:space-x-4">
                 <motion.button
                   onClick={isListening ? stopListening : startListening}
                   disabled={isProcessing}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 py-2 rounded-xl font-medium transition-all touch-manipulation ${
-                    isListening
+                  className={`flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 py-2 rounded-xl font-medium transition-all touch-manipulation ${isListening
                       ? 'bg-red-500 text-white'
                       : 'bg-gradient-to-r from-purple-500 to-blue-500 text-white'
-                  } disabled:opacity-50 text-xs sm:text-sm`}
+                    } disabled:opacity-50 text-xs sm:text-sm`}
                 >
                   {isListening ? (
                     <>

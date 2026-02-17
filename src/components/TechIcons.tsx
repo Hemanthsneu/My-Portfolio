@@ -1,18 +1,18 @@
 import React from 'react';
-import { 
+import {
   SiSwift, SiJavascript, SiTypescript, SiPython, SiGo, SiSharp, SiRust, SiCplusplus,
   SiReact, SiAngular, SiNextdotjs, SiNodedotjs, SiSpringboot, SiExpress, SiVuedotjs, SiDjango, SiDotnet,
   SiFirebase, SiPostgresql, SiMysql, SiMongodb, SiRedis, SiSnowflake, SiNeo4J,
-  SiAmazon, SiDocker, SiKubernetes, SiGooglecloud, SiJenkins, SiTerraform,
-  SiGraphql, SiWebrtc, SiThreedotjs, SiD3Dotjs, SiJest, SiCypress, SiSelenium, SiApachekafka, 
+  SiDocker, SiKubernetes, SiGooglecloud, SiJenkins, SiTerraform,
+  SiGraphql, SiWebrtc, SiThreedotjs, SiD3Dotjs, SiJest, SiCypress, SiSelenium, SiApachekafka,
   SiJira, SiGithub, SiNginx, SiSwagger, SiPulumi,
   SiIos, SiEthereum, SiSolidity, SiWeb3Dotjs
 } from 'react-icons/si';
-import { 
-  FaDatabase, FaCode, FaServer, FaCloud, FaJava, FaObjectGroup, FaAws, FaCoins, FaCubes
+import {
+  FaDatabase, FaCode, FaServer, FaJava, FaObjectGroup, FaAws, FaCoins, FaCubes
 } from 'react-icons/fa';
 import {
-  TbApi, TbBrandReactNative, TbServerBolt
+  TbApi, TbServerBolt
 } from 'react-icons/tb';
 import {
   BsCloudFill
@@ -37,7 +37,7 @@ const TechIcon: React.FC<TechIconProps> = ({ name, className = "", size = 24 }) 
     'Rust': SiRust,
     'C++': SiCplusplus,
     'Solidity': SiSolidity,
-    
+
     // Web Technologies
     'React': SiReact,
     'Angular': SiAngular,
@@ -48,14 +48,14 @@ const TechIcon: React.FC<TechIconProps> = ({ name, className = "", size = 24 }) 
     'Vue': SiVuedotjs,
     'Django': SiDjango,
     'ASP.NET': SiDotnet,
-    
+
     // iOS Development
     'UIKit': SiIos,
     'CoreData': FaDatabase,
     'CoreLocation': SiIos,
     'Firebase': SiFirebase,
     'Objective-C': FaObjectGroup,
-    
+
     // Databases
     'PostgreSQL': SiPostgresql,
     'MySQL': SiMysql,
@@ -64,7 +64,7 @@ const TechIcon: React.FC<TechIconProps> = ({ name, className = "", size = 24 }) 
     'DynamoDB': FaDatabase,
     'Snowflake': SiSnowflake,
     'Neo4j': SiNeo4J,
-    
+
     // Cloud & DevOps
     'AWS': FaAws,
     'Docker': SiDocker,
@@ -73,7 +73,7 @@ const TechIcon: React.FC<TechIconProps> = ({ name, className = "", size = 24 }) 
     'Jenkins': SiJenkins,
     'Terraform': SiTerraform,
     'Azure': BsCloudFill,
-    
+
     // Blockchain
     'Ethereum': SiEthereum,
     'Ethers.js': SiEthereum,
@@ -90,7 +90,7 @@ const TechIcon: React.FC<TechIconProps> = ({ name, className = "", size = 24 }) 
     'DeFi': FaCoins,
     'NFTs': SiEthereum,
     'Smart Contract Auditing': FaCubes,
-    
+
     // Additional Skills
     'GraphQL': SiGraphql,
     'REST APIs': TbApi,
@@ -113,7 +113,7 @@ const TechIcon: React.FC<TechIconProps> = ({ name, className = "", size = 24 }) 
   };
 
   const Icon = iconMap[name] || FaCode;
-  
+
   // TypeScript workaround for React 19 compatibility
   return React.createElement(Icon, { size, className });
 };
