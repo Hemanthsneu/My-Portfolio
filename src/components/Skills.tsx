@@ -53,6 +53,12 @@ const Skills: React.FC = () => {
       color: 'from-teal-500 to-green-500',
       skills: ['OpenTelemetry', 'Structured Logging', 'Metrics', 'Tracing', 'Dashboards', 'SLIs/SLOs', 'Incident Response'],
     },
+    {
+      id: 'blockchain',
+      category: 'Blockchain & Web3',
+      color: 'from-amber-500 to-orange-500',
+      skills: ['Ethereum', 'Solidity', 'Web3.js', 'Ethers.js', 'Smart Contracts', 'Tokenization', 'ERC-20', 'ERC-721', 'ERC-3643', 'ERC-1404', 'DeFi', 'NFTs', 'EVM'],
+    },
   ];
 
   const additionalSkills = [
@@ -60,7 +66,8 @@ const Skills: React.FC = () => {
     'JUnit', 'Mockito', 'Jest', 'Cypress', 'Selenium',
     'Integration Testing', 'Contract Testing', 'CI/CD',
     'AWS EKS', 'AWS Lambda', 'AWS SNS', 'AWS S3', 'AWS RDS',
-    'Alerting', 'Correlation IDs', 'Error Taxonomy'
+    'Alerting', 'Correlation IDs', 'Error Taxonomy',
+    'Web3 Integration', 'Hardhat', 'IPFS', 'Smart Contract Auditing', 'Non-EVM'
   ];
 
   const containerVariants = {
