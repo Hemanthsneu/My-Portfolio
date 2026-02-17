@@ -8,7 +8,7 @@ import ProfileCard from './ProfileCard';
 const Contact: React.FC = () => {
   const handleContactClick = () => {
     // Scroll to contact section or open email
-    window.location.href = 'mailto:hemanthsaragadam.dev@gmail.com';
+    window.location.href = 'mailto:hemanthdev31@gmail.com';
   };
 
   // Create a placeholder avatar using initials
@@ -24,14 +24,14 @@ const Contact: React.FC = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "hemanthsaragadam.dev@gmail.com",
-      href: "mailto:hemanthsaragadam.dev@gmail.com"
+      value: "hemanthdev31@gmail.com",
+      href: "mailto:hemanthdev31@gmail.com"
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+1(857)-313-2694",
-      href: "tel:+18573132694"
+      value: "+1 (510) 394-4615",
+      href: "tel:+15103944615"
     },
     {
       icon: MapPin,
@@ -51,7 +51,7 @@ const Contact: React.FC = () => {
     {
       icon: Linkedin,
       name: "LinkedIn",
-      href: "https://linkedin.com/in/hemanths31/",
+      href: "https://www.linkedin.com/in/hemanthsaragadam/",
       color: "hover:bg-blue-600"
     }
   ];

@@ -145,31 +145,31 @@ const VoiceAgent: React.FC<VoiceAgentProps> = ({ className = "" }) => {
     let agentResponse = '';
 
     if (lowerQuery.includes('name') || lowerQuery.includes('who are you') || lowerQuery.includes('introduce')) {
-      agentResponse = `Hello! I'm Hemanth's personal AI assistant. Hemanth Saragadam is a talented Senior Software Engineer currently working at Labs196 Innovations. He's quite passionate about full-stack development, cloud technologies, and building scalable applications that make a real difference.`;
+      agentResponse = `Hello! I'm Hemanth's personal AI assistant. Hemanth Saragadam is a Senior Software Engineer with over 5 years of experience building full-stack and backend platforms end to end. He currently works at Labs196 Innovations, where he leads microservices architecture, event-driven pipelines, and cloud infrastructure.`;
     }
     else if (lowerQuery.includes('experience') || lowerQuery.includes('work') || lowerQuery.includes('job')) {
-      agentResponse = `Hemanth has quite impressive experience! He's currently serving as a Senior Software Engineer at Labs196 Innovations since September 2024, where he leads full-stack development initiatives. Previously, he contributed as a Full Stack Developer at Northeastern University and worked as a Software Engineer at KYC Hub. He's skilled with modern technologies including React, Node.js, AWS, and Golang.`;
+      agentResponse = `Hemanth has quite impressive experience! He's currently a Senior Software Engineer at Labs196 Innovations since September 2024, where he led microservices architecture that improved feature delivery by 35% and reduced production incidents by 45%. Previously, he was a Full Stack Developer at Northeastern University, a Software Engineer at KYC Hub building compliance workflows, and a Full-Stack Engineer at DocsTime. He's also AWS Certified Solutions Architect and HashiCorp Terraform Associate certified.`;
     }
     else if (lowerQuery.includes('skill') || lowerQuery.includes('technology') || lowerQuery.includes('programming')) {
-      agentResponse = `Hemanth possesses quite diverse technical expertise! He's proficient in various programming languages such as Swift, Java, Python, JavaScript, TypeScript, and Go. For web development, he excels with React, Angular, Next.js, and Node.js. He's also well-versed in cloud platforms like AWS and GCP, along with databases including MySQL, MongoDB, and PostgreSQL.`;
+      agentResponse = `Hemanth has extensive technical expertise! He's proficient in Java, TypeScript, JavaScript, Python, and C#. On the backend, he excels with Spring Boot, Node.js, and Express. For frontend, React, Next.js, and Angular. He's particularly strong in distributed systems, event-driven architecture with Kafka, and cloud infrastructure with AWS, Kubernetes, Docker, and Terraform. He also specializes in observability using OpenTelemetry, SLIs, SLOs, and incident response.`;
     }
     else if (lowerQuery.includes('project') || lowerQuery.includes('build') || lowerQuery.includes('develop')) {
-      agentResponse = `Hemanth has developed some truly fascinating projects! His recent work includes a Geo-Anonymous Chat App for iOS using Swift and Firebase, an Assignment Management System with Node.js and AWS, and a Healthcare Progressive Web Application with offline capabilities. Each project beautifully showcases his full-stack expertise and attention to detail.`;
+      agentResponse = `Hemanth has built some impressive systems! AegisGate is a multi-tenant API gateway handling 12,000 requests per second. PulseLedger is an event-driven orders and payments system processing 1.2 million events daily with zero duplicates. SignalForge is a full-stack observability and SLO platform. And GlideCast is a low-latency remote session client achieving 60 FPS streaming with under 35 millisecond latency.`;
     }
     else if (lowerQuery.includes('contact') || lowerQuery.includes('reach') || lowerQuery.includes('email') || lowerQuery.includes('phone')) {
-      agentResponse = `You can easily reach Hemanth at hemanthsaragadam.dev@gmail.com or give him a call at +1(857)-313-2694. He's also quite active on LinkedIn at linkedin.com/in/hemanths31 and you can find his work on GitHub at github.com/Hemanthsneu. He's currently based in the lovely city of Boston, Massachusetts.`;
+      agentResponse = `You can reach Hemanth at hemanthdev31@gmail.com or call him at +1 510-394-4615. He's also active on LinkedIn at linkedin.com/in/hemanthsaragadam and GitHub at github.com/Hemanthsneu. He's based in Boston, Massachusetts.`;
     }
-    else if (lowerQuery.includes('education') || lowerQuery.includes('study') || lowerQuery.includes('university')) {
-      agentResponse = `Hemanth has a solid educational foundation in computer science and gained valuable academic and practical experience during his time as a Full Stack Developer at Northeastern University, where he honed both his technical skills and collaborative abilities.`;
+    else if (lowerQuery.includes('education') || lowerQuery.includes('study') || lowerQuery.includes('university') || lowerQuery.includes('certification') || lowerQuery.includes('certified')) {
+      agentResponse = `Hemanth holds a Master of Science in Computer Science from Northeastern University in Boston, completed in May 2024. He's also an AWS Certified Solutions Architect Associate and a HashiCorp Certified Terraform Associate, demonstrating his expertise in cloud architecture and infrastructure as code.`;
     }
     else if (lowerQuery.includes('hire') || lowerQuery.includes('available') || lowerQuery.includes('opportunity')) {
-      agentResponse = `Hemanth is always open to discussing exciting new opportunities and meaningful collaborations! While he's currently contributing at Labs196 Innovations, he's genuinely interested in challenging projects that push boundaries. I'd highly recommend reaching out to him directly via email or LinkedIn to explore potential opportunities.`;
+      agentResponse = `Hemanth is open to discussing new opportunities! He brings expertise in microservices, distributed systems, event-driven architecture, cloud infrastructure, and full-stack development. He's available for Senior Engineer, Staff Engineer, or Lead roles. I'd recommend reaching out to him at hemanthdev31@gmail.com or via LinkedIn to explore opportunities.`;
     }
     else if (lowerQuery.includes('hello') || lowerQuery.includes('hi') || lowerQuery.includes('hey')) {
-      agentResponse = `Hello there! Lovely to meet you! I'm Hemanth's AI assistant, and I'm delighted to help. I can tell you all about his professional experience, technical skills, exciting projects, and how to get in touch with him. What would you particularly like to know?`;
+      agentResponse = `Hello there! Lovely to meet you! I'm Hemanth's AI assistant, and I'm delighted to help. I can tell you about his experience in distributed systems and microservices, his technical skills, impressive projects, certifications, and how to get in touch. What would you like to know?`;
     }
     else {
-      agentResponse = `That's quite an interesting question! I'd be happy to help you learn more about Hemanth. I can share details about his professional experience, technical expertise, innovative projects, contact information, or career background. What specific aspect interests you most?`;
+      agentResponse = `That's an interesting question! I'd be happy to help you learn more about Hemanth. I can share details about his experience with microservices and distributed systems, technical skills, projects like AegisGate and PulseLedger, his certifications, or contact information. What interests you most?`;
     }
 
     const agentMessage = {

@@ -14,7 +14,7 @@ import DarkModeToggle from './components/DarkModeToggle';
 
 function App() {
   useEffect(() => {
-    document.title = 'Hemanth Saragadam | Senior Software Engineer & Full Stack Developer | Hire Top Engineer';
+    document.title = 'Hemanth Saragadam | Senior Software Engineer | Full Stack Developer | Distributed Systems | Hire Top Engineer';
   }, []);
 
   return (
@@ -45,41 +45,49 @@ function App() {
       <div className="sr-only" aria-hidden="true" role="complementary">
         <h2>Hire Hemanth Saragadam - Senior Software Engineer</h2>
         <p>
-          Hemanth Saragadam is a Senior Software Engineer, Full Stack Developer, Blockchain Developer, 
-          iOS Developer, and Cloud Architect with 5+ years of professional experience. He holds a 
-          Master's degree in Computer Science from Northeastern University, Boston, MA.
+          Hemanth Saragadam is a Senior Software Engineer with 5+ years building full-stack and backend 
+          platforms end to end, including API design, distributed systems, event-driven pipelines, cloud 
+          infrastructure, CI/CD, and on-call ownership. Master's in Computer Science from Northeastern 
+          University. AWS Certified Solutions Architect. HashiCorp Certified Terraform Associate.
         </p>
         <p>
-          Currently working at Labs196 Innovations LLC (RealProton) as Senior Software Engineer. 
-          Previously worked at Northeastern University, KYC Hub, and DocsTime. 
-          Expert in React, Node.js, TypeScript, JavaScript, Python, Go, Golang, Rust, Java, C++, 
-          Swift, Solidity, Angular, Next.js, Vue.js, Spring Boot, Django, ASP.NET, Express.js.
+          Currently Senior Software Engineer at Labs196 Innovations LLC. Previously at Northeastern 
+          University, KYC Hub, and DocsTime. Expert in Java, Spring Boot, Node.js, Express, React, 
+          Next.js, Angular, TypeScript, JavaScript, Python, C#, SQL.
         </p>
         <p>
-          Cloud and DevOps expertise: AWS, GCP, Azure, Docker, Kubernetes, Jenkins, Terraform, Pulumi, 
-          AWS Lambda, Serverless Architecture, CI/CD pipelines.
+          Architecture and Systems: Microservices, distributed systems, event-driven architecture, 
+          domain-driven design, system design, API versioning, saga pattern, outbox pattern.
         </p>
         <p>
-          Blockchain and Web3 specialist: Ethereum, Solidity Smart Contracts, ERC-20, ERC-721, 
-          ERC-3643, ERC-1404, Tokenization, DeFi, NFTs, Web3.js, Ethers.js.
+          Messaging and Pipelines: Kafka, idempotency, dead-letter queues, retries with backoff, 
+          at-least-once processing, schema evolution.
         </p>
         <p>
-          Database expertise: PostgreSQL, MySQL, MongoDB, Redis, DynamoDB, Snowflake, Neo4j.
+          Cloud and DevOps: AWS (EKS, Lambda, SNS, S3, RDS), Docker, Kubernetes, Terraform, 
+          Pulumi, Jenkins, GitHub Actions, CI/CD pipelines, infrastructure as code.
+        </p>
+        <p>
+          Observability: OpenTelemetry, structured logging, metrics, tracing, dashboards, alerting, 
+          SLIs, SLOs, incident response, burn-rate alerts, error budgets, chaos engineering.
+        </p>
+        <p>
+          Databases: PostgreSQL, MySQL, Redis, DynamoDB, MongoDB. Security: OAuth2, OpenID Connect, 
+          JWT, RBAC, secrets management. Testing: JUnit, Mockito, Jest, Cypress, Selenium, 
+          integration testing, contract testing.
         </p>
         <p>
           Available for hire worldwide: Boston, New York, San Francisco, Seattle, Chicago, Austin, 
           Los Angeles, Denver, Atlanta, Washington DC, Dallas, Houston, Miami, Philadelphia, 
-          Phoenix, Portland, Raleigh, Charlotte, Minneapolis, Detroit, London, Toronto, Singapore, 
-          Berlin, Amsterdam, Dublin, Bangalore, Hyderabad, Remote.
+          London, Toronto, Singapore, Berlin, Amsterdam, Dublin, Remote.
         </p>
         <p>
           Open to roles: Senior Software Engineer, Staff Engineer, Principal Engineer, Lead Developer, 
-          Technical Lead, Engineering Manager, Full Stack Developer, Frontend Developer, Backend Developer, 
-          Blockchain Developer, Smart Contract Developer, iOS Developer, Mobile Developer, Cloud Architect, 
-          Solutions Architect, DevOps Engineer, Site Reliability Engineer, Platform Engineer.
+          Technical Lead, Backend Engineer, Full Stack Developer, Cloud Architect, Solutions Architect, 
+          DevOps Engineer, Site Reliability Engineer, Platform Engineer, Engineering Manager.
         </p>
         <p>
-          Contact: hemanthsaragadam.dev@gmail.com | +1(857)-313-2694 | 
+          Contact: hemanthdev31@gmail.com | +1 (510) 394-4615 | 
           LinkedIn: linkedin.com/in/hemanthsaragadam | GitHub: github.com/Hemanthsneu
         </p>
       </div>

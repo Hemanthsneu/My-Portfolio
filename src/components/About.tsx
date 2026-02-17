@@ -50,20 +50,25 @@ const About: React.FC = () => {
             {/* Text Content */}
             <motion.div variants={itemVariants} className="space-y-6">
               <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                I'm a <span className="text-gold font-medium">Senior Software Engineer & Blockchain Specialist</span> with expertise in 
-                full-stack development, iOS development, cloud architecture, and Web3 technologies. Currently working at Labs196 Innovations LLC, 
-                leading the development of scalable web applications and blockchain solutions.
+                I'm a <span className="text-gold font-medium">Senior Software Engineer</span> with 5+ years building full-stack and backend 
+                platforms end to end—including API design, distributed systems, event-driven pipelines, cloud infrastructure, CI/CD, and 
+                on-call ownership. Currently leading development at Labs196 Innovations LLC.
               </p>
               
               <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                With a Master's degree in Computer Science from Northeastern University and experience across various domains—from 
-                building Progressive Web Applications to developing smart contracts and implementing tokenization standards (ERC-20, ERC-721, ERC-3643, ERC-1404)—I 
-                specialize in creating innovative solutions that blend technical excellence with exceptional user experience.
+                With a Master's degree in Computer Science from Northeastern University, I'm strong in Java, Spring Boot, Node.js, React, 
+                AWS, Kubernetes, and observability using SLIs, SLOs, and OpenTelemetry. I deliver scalable systems, improve latency and 
+                reliability, and ship iterative releases with measurable impact.
               </p>
 
-              <div className="flex items-center gap-4 pt-4">
+              <div className="flex flex-wrap items-center gap-3 pt-4">
+                <span className="px-3 py-1 text-xs uppercase tracking-wider border border-gold/30 text-gold">AWS Certified Solutions Architect</span>
+                <span className="px-3 py-1 text-xs uppercase tracking-wider border border-gold/30 text-gold">HashiCorp Terraform Associate</span>
+              </div>
+
+              <div className="flex items-center gap-4 pt-2">
                 <p className="text-sm uppercase tracking-wider text-gray-600 dark:text-gray-400">
-                  Available for freelance projects & blockchain consulting
+                  Available for full-time, contract & consulting opportunities
                 </p>
               </div>
             </motion.div>

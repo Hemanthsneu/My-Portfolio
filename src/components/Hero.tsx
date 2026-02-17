@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
 
   const downloadResume = () => {
     const link = document.createElement('a');
-    link.href = `${process.env.PUBLIC_URL}/Hemanth_Saragadam_AM (1).pdf`;
+    link.href = `${process.env.PUBLIC_URL}/Hemanth_Saragadam_Latest.pdf`;
     link.download = 'Hemanth_Saragadam_Resume.pdf';
     document.body.appendChild(link);
     link.click();
@@ -68,7 +68,7 @@ const Hero: React.FC = () => {
                 className="text-5xl md:text-7xl font-thin tracking-wider text-black dark:text-white"
               />
             </h1>
-            <span className="sr-only">Hemanth Saragadam - Senior Software Engineer, Full Stack Developer, iOS Developer, Blockchain Specialist, Cloud Architect. Available for hire. Based in Boston, MA. Master's in Computer Science from Northeastern University.</span>
+            <span className="sr-only">Hemanth Saragadam - Senior Software Engineer, Full Stack Developer, Distributed Systems Engineer, Backend Engineer, Cloud Architect. Available for hire. Based in Boston, MA. Master's in Computer Science from Northeastern University. AWS Certified Solutions Architect. HashiCorp Certified Terraform Associate.</span>
           </motion.div>
 
           {/* Roles with Curved Loop Animation */}
@@ -76,10 +76,10 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="mb-12 relative w-full max-w-5xl mx-auto h-32"
             role="marquee"
-            aria-label="Professional roles: Senior Software Engineer, Full-Stack Developer, iOS Developer, Blockchain Specialist, Cloud Architect"
+            aria-label="Professional roles: Senior Software Engineer, Full-Stack Developer, Distributed Systems, Cloud Architect, Backend Engineer"
           >
             <CurvedLoop 
-              marqueeText="SENIOR SOFTWARE ENGINEER ✦ FULL-STACK DEVELOPER ✦ iOS DEVELOPER ✦ BLOCKCHAIN SPECIALIST ✦ CLOUD ARCHITECT ✦ "
+              marqueeText="SENIOR SOFTWARE ENGINEER ✦ FULL-STACK DEVELOPER ✦ DISTRIBUTED SYSTEMS ✦ CLOUD ARCHITECT ✦ BACKEND ENGINEER ✦ "
               speed={2}
               className="fill-gold dark:fill-gold-light"
               curveAmount={30}

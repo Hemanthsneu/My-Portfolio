@@ -9,112 +9,112 @@ const Projects: React.FC = () => {
   const featuredProjects = [
     {
       id: 1,
-      title: "Tokenization Platform",
-      description: "Enterprise-grade tokenization platform implementing multiple ERC standards including ERC-3643 for security tokens, ERC-1404 for restricted tokens, and traditional ERC-20/721 for fungible and non-fungible assets.",
-      longDescription: "Developed a comprehensive blockchain tokenization platform supporting multiple token standards. Implemented smart contracts for ERC-3643 (T-REX protocol) for compliant security tokens, ERC-1404 for restricted token transfers, and traditional ERC-20/721 standards. Built using Solidity, Ethers.js, and Web3.js with deployment capabilities for both EVM and non-EVM based chains.",
-      image: "https://images.unsplash.com/photo-1639322537228-f710d846310a?w=800&h=600&fit=crop",
-      technologies: ["Solidity", "Ethers.js", "Web3.js", "React", "Node.js", "Smart Contracts"],
+      title: "AegisGate: Multi-Tenant API Gateway",
+      description: "Multi-tenant API gateway with authentication hooks, per-route policies, and role-aware routing. Sustained 12,000 req/s in load tests with p95 latency under 45ms.",
+      longDescription: "Built a multi-tenant API gateway and policy engine with sliding-window rate limiting, burst control, request fingerprinting, and hot-key mitigation. Implemented contract tests and backward-compatible API versioning checks in CI. Instrumented end-to-end tracing and metrics with service-level dashboards and burn-rate alerts.",
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop",
+      technologies: ["Node.js", "Redis", "OpenAPI", "OpenTelemetry", "CI/CD", "Contract Testing"],
       github: "https://github.com/Hemanthsneu",
       live: "",
       highlights: [
-        "Multiple ERC standard implementations",
-        "Compliance and KYC integration",
-        "Cross-chain deployment capability",
-        "Gas-optimized smart contracts"
+        "12,000 requests/second with p95 < 45ms",
+        "Reduced abuse traffic impact by 70%, 99.95% availability",
+        "Reduced breaking changes by 90% with contract tests",
+        "Reduced MTTR by 50% with burn-rate alerts"
       ]
     },
     {
       id: 2,
-      title: "Geo-Anonymous Chat App",
-      description: "iOS application allowing anonymous users within a specific geographic radius to chat in real time. Features secure messaging protocols, push notifications, and an intuitive user interface.",
-      longDescription: "Developed a location-based anonymous chat application leveraging CoreLocation for accurate geographic communication. Implemented secure, anonymous user authentication and chat management using Firebase with real-time data synchronization. Designed an intuitive and visually appealing user interface using UIKit, focusing on smooth interactions and accessibility.",
-      image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&h=600&fit=crop",
-      technologies: ["iOS", "Swift", "Firebase", "CoreLocation", "UIKit"],
+      title: "PulseLedger: Event-Driven Orders & Payments",
+      description: "Microservices system for orders and payments using saga orchestration and transactional outbox publishing. Processed 1.2M events/day with zero duplicate charges.",
+      longDescription: "Designed event-driven architecture with saga orchestration for order and payment workflows. Implemented idempotent consumers, retries with exponential backoff, and dead-letter workflows with replay tooling. Built schema evolution strategy with compatibility gates and consumer contract checks.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+      technologies: ["Kafka", "PostgreSQL", "Saga Pattern", "DLQ", "Schema Versioning", "CI/CD"],
       github: "https://github.com/Hemanthsneu",
       live: "",
       highlights: [
-        "Real-time location-based chat functionality",
-        "Secure anonymous authentication",
-        "Push notifications for message alerts",
-        "Optimized UI for seamless chat experience"
+        "1.2M events/day, zero duplicate charges",
+        "Reduced failure handling time by 60%",
+        "Zero-downtime upgrades with schema evolution",
+        "Transactional outbox for reliable delivery"
       ]
     },
     {
       id: 3,
-      title: "Assignment Management System",
-      description: "Full-stack web application for managing academic assignments with role-based access control, automated processing, and comprehensive notification system.",
-      longDescription: "Engineered a comprehensive Assignment Management System using Node.js and RESTful APIs. Utilized Sequelize ORM for secure data storage with role-based access control. Integrated AWS services including SNS for alerts and Lambda for automated submission processing, with Pulumi for Infrastructure as Code.",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
-      technologies: ["Node.js", "AWS", "Pulumi", "Sequelize", "RESTful APIs"],
+      title: "SignalForge: Observability & SLO Platform",
+      description: "Unified telemetry pipeline collecting traces, metrics, and logs with correlation IDs. Defined SLIs/SLOs with error budgets and burn-rate alerts.",
+      longDescription: "Built a full-stack observability platform with unified telemetry collection from services and clients. Defined SLIs and SLOs for critical user journeys with error budgets and burn-rate alerting. Load-tested and chaos-tested critical paths to validate timeouts, retries, and back-pressure behavior.",
+      image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&h=600&fit=crop",
+      technologies: ["OpenTelemetry", "Dashboards", "Alerting", "k6", "Fault Injection", "SLIs/SLOs"],
       github: "https://github.com/Hemanthsneu",
       live: "",
       highlights: [
-        "RESTful API architecture",
-        "AWS Lambda automated processing",
-        "Role-based access control",
-        "Real-time notifications via SNS"
+        "Reduced alert noise by 35%",
+        "Improved incident detection by 45%",
+        "Reduced false positives by 30%",
+        "Reduced cascading failures by 40% with chaos testing"
       ]
     },
     {
       id: 4,
-      title: "Healthcare PWA Platform",
-      description: "Progressive Web Application for healthcare providers with offline support, push notifications, and real-time referral analytics.",
-      longDescription: "Converted an Angular-based website into a scalable Progressive Web Application with offline support and enhanced caching mechanisms. Built CI/CD pipeline using Jenkins, reducing release times by 40%. Leveraged Redis for caching and AWS Lambda for real-time referral analytics to support high-volume traffic.",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
-      technologies: ["Angular", "PWA", "Jenkins", "Redis", "AWS Lambda"],
+      title: "GlideCast: Low-Latency Remote Session Client",
+      description: "Native Windows client with asynchronous pipelines and bounded queues for remote streaming. 60 FPS with median input-to-frame latency under 35ms.",
+      longDescription: "Built a native Windows client using C# and .NET 8 with asynchronous pipelines for handling input events and frame updates. Implemented reconnect with exponential backoff, session resume, and congestion control. Instrumented telemetry with distributed tracing and performance counters.",
+      image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=600&fit=crop",
+      technologies: ["C#", ".NET 8", "gRPC", "WebSockets", "OpenTelemetry", "Monitoring"],
       github: "https://github.com/Hemanthsneu",
       live: "",
       highlights: [
-        "40% reduction in release times",
-        "Offline support and push notifications",
-        "Real-time analytics dashboard",
-        "High-volume traffic optimization"
+        "60 FPS streaming, <35ms input-to-frame latency",
+        "98% reconnect success rate",
+        "55% faster disconnect recovery",
+        "Distributed tracing for root-cause analysis"
       ]
     },
   ];
 
   const otherProjects = [
     {
-      title: "DeFi Yield Aggregator",
-      description: "Smart contract system for optimizing yield farming strategies across multiple DeFi protocols with automated rebalancing.",
-      technologies: ["Solidity", "Hardhat", "Ethers.js"],
-      github: "https://github.com/Hemanthsneu",
-      image: "https://images.unsplash.com/photo-1640161704729-cbe966a08476?w=600&h=400&fit=crop"
-    },
-    {
-      title: "NFT Marketplace",
-      description: "Decentralized marketplace for trading NFTs with royalty distribution and multi-chain support.",
-      technologies: ["ERC-721", "IPFS", "Web3.js"],
-      github: "https://github.com/Hemanthsneu",
-      image: "https://images.unsplash.com/photo-1634973357973-f2ed2657db3c?w=600&h=400&fit=crop"
-    },
-    {
-      title: "KYC Compliance Platform",
-      description: "Responsive compliance tools for identity verification and fraud detection with optimized performance.",
-      technologies: ["Angular", "Spring Boot", "REST APIs"],
-      github: "https://github.com/Hemanthsneu",
-      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop"
-    },
-    {
-      title: "Real-time Financial Dashboard",
-      description: "Interactive dashboards for institutional investors with GraphQL APIs and automated testing.",
-      technologies: ["React", "GraphQL", "TypeScript"],
+      title: "TriageFlow",
+      description: "Real-time incident triage system that prioritizes events using a rules engine and scoring model. Reduced alert backlog by 55% and handles 10x traffic spikes.",
+      technologies: ["Kafka", "Node.js", "Redis", "OpenTelemetry"],
       github: "https://github.com/Hemanthsneu",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
     },
     {
-      title: "Cross-Chain Bridge",
-      description: "Blockchain bridge enabling seamless asset transfers between different blockchain networks.",
-      technologies: ["Solidity", "Go", "Rust"],
+      title: "MatchMint",
+      description: "Serverless scheduling platform matching participants using availability windows and constraints. Reduced scheduling conflicts by 60%.",
+      technologies: ["AWS Lambda", "DynamoDB", "SNS", "JWT"],
       github: "https://github.com/Hemanthsneu",
-      image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop"
+      image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=600&h=400&fit=crop"
     },
     {
-      title: "Microservices Platform",
-      description: "Scalable microservices architecture with service mesh, distributed tracing, and container orchestration.",
-      technologies: ["Kubernetes", "Docker", "Istio"],
+      title: "VaultLink",
+      description: "Zero-trust file sharing with short-lived signed links, download limits, and audit trails. Sustained 5,000 req/s under load tests.",
+      technologies: ["AWS S3", "Redis", "React", "Node.js"],
       github: "https://github.com/Hemanthsneu",
-      image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=600&h=400&fit=crop"
+      image: "https://images.unsplash.com/photo-1633265486064-086b219458ec?w=600&h=400&fit=crop"
+    },
+    {
+      title: "Assignment Management System",
+      description: "Full-stack system with role-based permissions, serverless processing, and IaC. Reduced processing time from 6 min to 25 sec.",
+      technologies: ["Node.js", "AWS Lambda", "Pulumi", "PostgreSQL"],
+      github: "https://github.com/Hemanthsneu",
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop"
+    },
+    {
+      title: "Healthcare PWA Platform",
+      description: "Progressive Web App with offline-first caching, push notifications, and real-time analytics. Reduced release cycle time by 48%.",
+      technologies: ["Angular", "Jenkins", "Redis", "AWS Lambda"],
+      github: "https://github.com/Hemanthsneu",
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop"
+    },
+    {
+      title: "KYC Compliance Platform",
+      description: "Full-stack KYC/KYB verification workflows with multi-tenant auth and 6+ provider integrations. Increased throughput by 30%.",
+      technologies: ["Spring Boot", "Angular", "OAuth2", "Redis"],
+      github: "https://github.com/Hemanthsneu",
+      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop"
     }
   ];
 
@@ -165,7 +165,7 @@ const Projects: React.FC = () => {
             </h2>
             <div className="w-24 h-px bg-gold mx-auto mb-4"></div>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Showcasing my latest work in blockchain, mobile, and cloud technologies
+              Showcasing my latest work in distributed systems, observability, and scalable architecture
             </p>
           </motion.div>
 

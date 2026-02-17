@@ -9,45 +9,58 @@ const Skills: React.FC = () => {
       id: 'languages',
       category: 'Languages',
       color: 'from-blue-500 to-cyan-500',
-      skills: ['Swift', 'Java', 'JavaScript', 'TypeScript', 'Python', 'GO', 'C#', 'Rust', 'C++', 'Solidity'],
+      skills: ['Java', 'TypeScript', 'JavaScript', 'Python', 'C#', 'SQL'],
     },
     {
-      id: 'web',
-      category: 'Web Technologies',
+      id: 'backend',
+      category: 'Backend',
       color: 'from-purple-500 to-pink-500',
-      skills: ['React', 'Angular', 'Next.js', 'Node.js', 'Spring Boot', 'Express', 'Vue', 'Django', 'ASP.NET'],
+      skills: ['Spring Boot', 'Node.js', 'Express', 'REST APIs', 'OpenAPI', 'gRPC', 'WebSockets'],
     },
     {
-      id: 'blockchain',
-      category: 'Blockchain & Web3',
+      id: 'frontend',
+      category: 'Frontend',
+      color: 'from-cyan-500 to-blue-500',
+      skills: ['React', 'Next.js', 'Angular', 'HTML', 'CSS'],
+    },
+    {
+      id: 'architecture',
+      category: 'Architecture & Systems',
       color: 'from-indigo-500 to-purple-500',
-      skills: ['Ethereum', 'Solidity', 'Ethers.js', 'Web3.js', 'Smart Contracts', 'Tokenization', 'ERC-20', 'ERC-721', 'ERC-3643', 'ERC-1404', 'EVM', 'Non-EVM'],
+      skills: ['Microservices', 'Distributed Systems', 'Event-Driven', 'Domain-Driven Design', 'System Design', 'API Versioning'],
     },
     {
-      id: 'mobile',
-      category: 'iOS Development',
+      id: 'messaging',
+      category: 'Messaging & Data Pipelines',
       color: 'from-orange-500 to-red-500',
-      skills: ['Swift', 'UIKit', 'CoreData', 'CoreLocation', 'Firebase', 'Objective-C'],
+      skills: ['Kafka', 'Idempotency', 'Outbox Pattern', 'Dead-Letter Queues', 'Retries with Backoff'],
     },
     {
       id: 'databases',
-      category: 'Databases & Storage',
+      category: 'Datastores',
       color: 'from-green-500 to-emerald-500',
-      skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'DynamoDB', 'Snowflake', 'Neo4j'],
+      skills: ['PostgreSQL', 'MySQL', 'Redis', 'DynamoDB', 'MongoDB'],
     },
     {
       id: 'cloud',
       category: 'Cloud & DevOps',
       color: 'from-yellow-500 to-orange-500',
-      skills: ['AWS', 'Docker', 'Kubernetes', 'GCP', 'Jenkins', 'Terraform', 'Azure'],
+      skills: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'Pulumi', 'Jenkins', 'GitHub Actions'],
+    },
+    {
+      id: 'observability',
+      category: 'Observability & Reliability',
+      color: 'from-teal-500 to-green-500',
+      skills: ['OpenTelemetry', 'Structured Logging', 'Metrics', 'Tracing', 'Dashboards', 'SLIs/SLOs', 'Incident Response'],
     },
   ];
 
   const additionalSkills = [
-    'GraphQL', 'REST APIs', 'WebRTC', 'gRPC', 'Three.js', 'D3.js',
-    'Jest', 'Cypress', 'Selenium', 'TDD', 'Kafka', 'WebSockets',
-    'Jira', 'GitHub', 'Nginx', 'Swagger', 'Pulumi', 'AWS Lambda',
-    'Web3 Integration', 'DeFi', 'NFTs', 'Smart Contract Auditing'
+    'OAuth2', 'OpenID Connect', 'JWT', 'RBAC', 'Secrets Management',
+    'JUnit', 'Mockito', 'Jest', 'Cypress', 'Selenium',
+    'Integration Testing', 'Contract Testing', 'CI/CD',
+    'AWS EKS', 'AWS Lambda', 'AWS SNS', 'AWS S3', 'AWS RDS',
+    'Alerting', 'Correlation IDs', 'Error Taxonomy'
   ];
 
   const containerVariants = {

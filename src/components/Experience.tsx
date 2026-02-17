@@ -8,17 +8,19 @@ const Experience: React.FC = () => {
     {
       id: 1,
       title: "Senior Software Engineer",
-      company: "Labs196 Innovations LLC (RealProton)",
+      company: "Labs196 Innovations LLC",
       period: "September 2024 – Present",
       location: "Sugar Land, Texas",
       description: [
-        "Led full-stack ownership including requirement gathering, designing, implementing, and deploying scalable features across web applications, ensuring cross-platform compatibility",
-        "Designed and maintained complex data storage solutions using MySQL and non-relational databases, optimizing data processing efficiency and ensuring high availability",
-        "Built powerful and intuitive client apps using Next.js, implementing responsive features for seamless experience across devices",
-        "Led technical design discussions with stakeholders, focusing on reliability and scalability",
-        "Developed and optimized backend services using Golang, including data processing pipelines and server-side logic"
+        "Led architecture and delivery of a microservices platform, defining bounded contexts, API contracts, and data ownership; improved feature delivery speed by 35% and reduced cross-team dependencies by 40%",
+        "Designed event-driven workflows with idempotent consumers, retries with exponential backoff, and dead-letter handling; reduced production incidents by 45% and improved recovery time by 38%",
+        "Implemented transactional outbox publishing for reliable event delivery; eliminated duplicate side effects and improved data consistency across services by 90%",
+        "Optimized hot-path APIs with query plan tuning, indexing, and selective caching; reduced p95 latency by 42% and lowered database CPU by 28%",
+        "Built production observability with traces, metrics, logs, and correlation IDs; reduced time-to-root-cause by 55% and improved alert precision by 30%",
+        "Strengthened platform security with RBAC, audit trails, and secrets management; reduced security findings by 60%",
+        "Automated deployments and infrastructure with CI/CD and IaC; reduced deployment time by 70% and lowered rollback rate by 25%"
       ],
-      technologies: ["Next.js", "Golang", "MySQL", "Full-Stack Development"]
+      technologies: ["Java", "Spring Boot", "Node.js", "PostgreSQL", "Kafka", "Redis", "Kubernetes", "Terraform", "OpenTelemetry"]
     },
     {
       id: 2,
@@ -27,40 +29,41 @@ const Experience: React.FC = () => {
       period: "January 2023 – May 2024",
       location: "Boston, Massachusetts",
       description: [
-        "Engineered an Assignment Management System with Node.js, implementing RESTful APIs and Sequelize ORM for secure data storage",
-        "Utilized AWS SDK for SNS alerts, Pulumi for Infrastructure as Code, and AWS Lambda for automated submission processing",
-        "Enhanced application reliability by integrating Winston for logging and StatsD for capturing metrics",
-        "Collaborated with UX/UI designers to enhance user experience, following user-centered design principles"
+        "Built an assignment management system with role-based permissions, validation, and workflow automation; reduced administrative overhead by 30% and improved submission correctness by 15%",
+        "Automated submission processing using serverless event notifications with idempotent handlers; reduced processing time from 6 minutes to 25 seconds",
+        "Added observability with structured logs, metrics, dashboards, and alerts; reduced time-to-detect issues by 40%",
+        "Provisioned environments and infrastructure using IaC and standardized setup; reduced onboarding time by 45%"
       ],
-      technologies: ["Node.js", "AWS", "Pulumi", "Sequelize", "RESTful APIs"]
+      technologies: ["Node.js", "Express", "AWS Lambda", "SNS", "Pulumi", "PostgreSQL", "Jest"]
     },
     {
       id: 3,
       title: "Software Engineer",
       company: "KYC Hub",
-      period: "January 2022 – August 2022",
+      period: "January 2022 – June 2022",
       location: "Remote",
       description: [
-        "Developed responsive user interfaces for compliance tools using Angular, streamlining workflows for identity verification and fraud detection",
-        "Created scalable RESTful APIs with Spring Boot to integrate multiple global data sources",
-        "Optimized backend services and Angular components to reduce data fetching latency by 30%",
-        "Worked on front-end and backend integration, leveraging REST APIs for efficient data exchange"
+        "Built full-stack KYC and KYB verification workflows with reviewer tooling and deterministic state transitions; increased case throughput by 30% and reduced manual steps by 25%",
+        "Integrated 6+ identity and risk providers using adapter services with standardized mapping and error taxonomy; improved completion rate by 11%",
+        "Implemented multi-tenant authentication, authorization, and auditing with PII-safe logging; passed compliance review with 50% fewer findings",
+        "Reduced endpoint latency through query optimization, pagination, and caching; improved p95 response time by 29% under peak traffic"
       ],
-      technologies: ["Angular", "Spring Boot", "RESTful APIs", "SQL", "NoSQL"]
+      technologies: ["Spring Boot", "Angular", "REST APIs", "OAuth2", "JWT", "Redis", "SQL", "JUnit", "Cypress"]
     },
     {
       id: 4,
-      title: "Full Stack Engineer",
+      title: "Full-Stack Engineer",
       company: "DocsTime",
-      period: "January 2020 – December 2021",
+      period: "January 2020 – October 2021",
       location: "Remote",
       description: [
-        "Converted an Angular-based website into a scalable Progressive Web Application (PWA) with offline support and push notifications",
-        "Built a CI/CD pipeline using Jenkins, reducing release times by 40%",
-        "Leveraged Redis for caching and AWS Lambda-based serverless functions for real-time referral analytics",
-        "Supported high-volume traffic with minimal latency through optimized architecture"
+        "Delivered end-to-end product features across frontend and backend; reduced customer request turnaround time from 2 weeks to 4 days",
+        "Modernized the application into a progressive web experience with offline-first caching and notifications; improved retention by 12%",
+        "Built CI/CD pipelines with automated tests, versioned artifacts, and staged deployments; reduced release cycle time by 48%",
+        "Optimized APIs by profiling slow endpoints, tuning SQL queries and indexes; reduced p95 latency by 37% and reduced timeouts by 31%",
+        "Introduced caching for high-frequency reads; reduced database load by 34% and improved throughput by 21%"
       ],
-      technologies: ["Angular", "PWA", "Jenkins", "Redis", "AWS Lambda"]
+      technologies: ["Angular", "Node.js", "REST APIs", "Redis", "Jenkins", "AWS Lambda", "Jest", "Cypress"]
     }
   ];
 

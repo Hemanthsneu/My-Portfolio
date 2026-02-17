@@ -15,13 +15,13 @@ const Footer: React.FC = () => {
     {
       icon: Linkedin,
       name: "LinkedIn",
-      href: "https://linkedin.com/in/hemanths31/",
+      href: "https://www.linkedin.com/in/hemanthsaragadam/",
       color: "hover:bg-blue-600"
     },
     {
       icon: Mail,
       name: "Email",
-      href: "mailto:hemanthsaragadam.dev@gmail.com",
+      href: "mailto:hemanthdev31@gmail.com",
       color: "hover:bg-red-500"
     }
   ];
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
             className="text-center"
           >
             <h3 className="text-2xl font-bold mb-2 text-gray-800 dark:text-white">Hemanth Saragadam</h3>
-            <p className="text-gray-600 dark:text-gray-400">Senior Software Engineer & Blockchain Specialist</p>
+            <p className="text-gray-600 dark:text-gray-400">Senior Software Engineer | Distributed Systems | Full Stack</p>
           </motion.div>
 
           {/* Social Links */}
