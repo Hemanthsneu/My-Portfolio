@@ -52,7 +52,7 @@ const About: React.FC = () => {
               <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 I'm a <span className="text-gold font-medium">Senior Software Engineer</span> with 5+ years building full-stack and backend 
                 platforms end to end—including API design, distributed systems, event-driven pipelines, cloud infrastructure, CI/CD, and 
-                on-call ownership. Currently leading development at Labs196 Innovations LLC.
+                on-call ownership. Currently a Software Consultant at Stratagem Consulting LLC.
               </p>
               
               <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">

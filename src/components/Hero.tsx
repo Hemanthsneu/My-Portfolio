@@ -30,15 +30,6 @@ const Hero: React.FC = () => {
     },
   };
 
-  const downloadResume = () => {
-    const link = document.createElement('a');
-    link.href = `${process.env.PUBLIC_URL}/Hemanth_Saragadam_Latest.pdf`;
-    link.download = 'Hemanth_Saragadam_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <section
       id="home"
@@ -112,12 +103,6 @@ const Hero: React.FC = () => {
             >
               View Work
             </a>
-            <button
-              onClick={downloadResume}
-              className="btn-gold"
-            >
-              Download Resume
-            </button>
           </motion.div>
 
           {/* Scroll indicator */}

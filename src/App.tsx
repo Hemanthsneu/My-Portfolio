@@ -51,7 +51,7 @@ function App() {
           University. AWS Certified Solutions Architect. HashiCorp Certified Terraform Associate.
         </p>
         <p>
-          Currently Senior Software Engineer at Labs196 Innovations LLC. Previously at Northeastern 
+          Currently Software Consultant at Stratagem Consulting LLC. Previously at Northeastern
           University, KYC Hub, and DocsTime. Expert in Java, Spring Boot, Node.js, Express, React, 
           Next.js, Angular, TypeScript, JavaScript, Python, C#, SQL.
         </p>

@@ -7,20 +7,19 @@ const Experience: React.FC = () => {
   const experiences = [
     {
       id: 1,
-      title: "Senior Software Engineer",
-      company: "Labs196 Innovations LLC",
-      period: "September 2024 – Present",
-      location: "Sugar Land, Texas",
+      title: "Software Consultant",
+      company: "Stratagem Consulting LLC",
+      period: "June 2026 – Present",
+      location: "Remote",
       description: [
-        "Led architecture and delivery of a microservices platform, defining bounded contexts, API contracts, and data ownership; improved feature delivery speed by 35% and reduced cross-team dependencies by 40%",
-        "Designed event-driven workflows with idempotent consumers, retries with exponential backoff, and dead-letter handling; reduced production incidents by 45% and improved recovery time by 38%",
-        "Implemented transactional outbox publishing for reliable event delivery; eliminated duplicate side effects and improved data consistency across services by 90%",
-        "Optimized hot-path APIs with query plan tuning, indexing, and selective caching; reduced p95 latency by 42% and lowered database CPU by 28%",
-        "Built production observability with traces, metrics, logs, and correlation IDs; reduced time-to-root-cause by 55% and improved alert precision by 30%",
-        "Strengthened platform security with RBAC, audit trails, and secrets management; reduced security findings by 60%",
-        "Automated deployments and infrastructure with CI/CD and IaC; reduced deployment time by 70% and lowered rollback rate by 25%"
+        "Design and document agentic AI workflows for client engagements, producing the technical design specifications and supporting documentation that engineering teams build against",
+        "Built a memory and state management workflow for AI document generation, persisting context across multi-step generation so long documents stay consistent end to end",
+        "Conduct technology stack analysis for new engagements, evaluating frameworks, datastores, and integration approaches against functional and non-functional requirements, and presenting written recommendations to technical and business stakeholders",
+        "Design relational data models and produce ER diagrams that define entities, relationships, and constraints ahead of implementation",
+        "Analyze client data across multiple source data sheets to derive the entities, relationships, and transformation rules that feed those data models",
+        "Support several client engagements in parallel, moving between design, data modeling, and documentation work as each engagement requires"
       ],
-      technologies: ["Java", "Spring Boot", "Node.js", "PostgreSQL", "Kafka", "Redis", "Kubernetes", "Terraform", "OpenTelemetry"]
+      technologies: ["Agentic AI", "LLMs", "Data Modeling", "ER Diagrams", "System Design", "Technical Documentation"]
     },
     {
       id: 2,
