@@ -23,6 +23,23 @@ const Experience: React.FC = () => {
     },
     {
       id: 2,
+      title: "Senior Software Engineer",
+      company: "Labs196 Innovations LLC",
+      period: "September 2024 – May 2026",
+      location: "Sugar Land, Texas",
+      description: [
+        "Led architecture and delivery of a microservices platform, defining bounded contexts, API contracts, and data ownership; improved feature delivery speed by 35% and reduced cross-team dependencies by 40%",
+        "Designed event-driven workflows with idempotent consumers, retries with exponential backoff, and dead-letter handling; reduced production incidents by 45% and improved recovery time by 38%",
+        "Implemented transactional outbox publishing for reliable event delivery; eliminated duplicate side effects and improved data consistency across services by 90%",
+        "Optimized hot-path APIs with query plan tuning, indexing, and selective caching; reduced p95 latency by 42% and lowered database CPU by 28%",
+        "Built production observability with traces, metrics, logs, and correlation IDs; reduced time-to-root-cause by 55% and improved alert precision by 30%",
+        "Strengthened platform security with RBAC, audit trails, and secrets management; reduced security findings by 60%",
+        "Automated deployments and infrastructure with CI/CD and IaC; reduced deployment time by 70% and lowered rollback rate by 25%"
+      ],
+      technologies: ["Java", "Spring Boot", "Node.js", "PostgreSQL", "Kafka", "Redis", "Kubernetes", "Terraform", "OpenTelemetry"]
+    },
+    {
+      id: 3,
       title: "Full Stack Developer (Part-time)",
       company: "Northeastern University",
       period: "January 2023 – May 2024",
@@ -36,7 +53,7 @@ const Experience: React.FC = () => {
       technologies: ["Node.js", "Express", "AWS Lambda", "SNS", "Pulumi", "PostgreSQL", "Jest"]
     },
     {
-      id: 3,
+      id: 4,
       title: "Software Engineer",
       company: "KYC Hub",
       period: "January 2022 – June 2022",
@@ -50,7 +67,7 @@ const Experience: React.FC = () => {
       technologies: ["Spring Boot", "Angular", "REST APIs", "OAuth2", "JWT", "Redis", "SQL", "JUnit", "Cypress"]
     },
     {
-      id: 4,
+      id: 5,
       title: "Full-Stack Engineer",
       company: "DocsTime",
       period: "January 2020 – October 2021",
